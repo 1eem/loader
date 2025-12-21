@@ -1,3 +1,241 @@
+shared.Cider = {
+	['Main'] = {
+	    ['Intro'] = true,
+		['Sync'] = true,
+		['Keybinds'] = {
+			['Aim Assist'] = 'C',
+			['Silent Aim'] = 'C',
+			['Trigger Bot Target'] = 'C',
+			['Trigger Bot Activate'] = 'MouseButton1',
+			['Speed'] = 'T',
+			['Jump Power'] = 'Y',
+			['Inventory Sorter'] = 'F2',
+			['Panic'] = 'L',
+			['Raid Awareness'] = 'K',
+		},
+		['Panic'] = {
+			['Enabled'] = false,
+			['Disable Aim Assist'] = true,
+			['Disable Silent Aim'] = true,
+			['Disable Trigger Bot'] = true,
+			['Disable Visuals'] = true,
+			['Disable Player Modifications'] = true,
+			['Disable Raid Awareness'] = true,
+		},
+	},
+	['Target Checks'] = {
+		['Knocked'] = true,
+		['Grabbed'] = false,
+		['Wall'] = true,
+		['Forcefield'] = true,
+	},
+	['Self Checks'] = {
+		['Knocked'] = true,
+		['Grabbed'] = true,
+		['Forcefield'] = false,
+	},
+	['Unlock Conditions'] = {
+		['Unlock on Target Knock'] = true,
+		['Unlock on Self Knock'] = false,
+	},
+	['Silent Aimbot'] = {
+		['Enabled'] = true,
+		['Target Mode'] = 'Target',
+		['Target Line'] = false,
+		['Override Y Axis'] = 'None',
+		['Hit Target'] = {
+			['Hit Part'] = 'Closest Point',
+		},
+		['FOV'] = {
+			['FOV Type'] = 'Box',
+			['Circle Value'] = 75,
+			['Box'] = {
+				['X'] = 45,
+				['Y'] = 45,
+			},
+			['Visualize'] = false,
+		},
+		['Prediction'] = {
+			['X'] = 0.0223,
+			['Y'] = 0.0223,
+			['Z'] = 0.0223,
+			['Power'] = {
+				['Enabled'] = false,
+				['Prediction Power'] = 1.042,
+			},
+		},
+		['Anti Curve'] = {
+			['Enabled'] = false,
+			['Mode'] = 'Angles',
+			['Angles'] = {
+				['Max Angle'] = 12,
+				['Distance Threshold'] = 100,
+				['Visualize Anti Curve'] = false,
+			},
+		},
+	},
+	['Aim Assist'] = {
+		['Enabled'] = true,
+		['Mode'] = 'Camera',
+		['Hit Target'] = {
+			['Hit Part'] = 'Head',
+			['Prediction'] = {
+				['X'] = 0.01,
+				['Y'] = 0.01,
+				['Z'] = 0.01,
+			},
+		},
+
+		['Humanizer'] = {
+			['Enabled'] = true,
+			['Samples'] = {
+				{
+					['X'] = 0.03,
+					['Y'] = 0.03,
+					['Z'] = 0.03,
+					['Weight'] = 1,
+				},
+				{
+					['X'] = 0.02,
+					['Y'] = 0.02,
+					['Z'] = 0.02,
+					['Weight'] = 1,
+				},
+				{
+					['X'] = 0.04,
+					['Y'] = 0.04,
+					['Z'] = 0.04,
+					['Weight'] = 1,
+				},
+				{
+					['X'] = 0.01,
+					['Y'] = 0.01,
+					['Z'] = 0.01,
+					['Weight'] = 1,
+				},
+			},
+		},
+
+		['Camera Mode'] = {
+			['Shift Locked'] = true,
+			['Third Person'] = true,
+			['First Person'] = true,
+		},
+		['Smoothing'] = {
+			['Smoothing Value'] = {
+				['X'] = 0.07,
+				['Y'] = 0.07,
+				['Z'] = 0.07,
+				['Mouse Smoothing'] = {
+					['X'] = 0.17,
+					['Y'] = 0.17,
+					['Z'] = 0.17,
+				},
+			},
+			['Easing'] = {
+				['First'] = 'Sine',
+				['Second'] = 'Sine',
+				['Easing Direction'] = 'InOut',
+			},
+		},
+		['FOV'] = {
+			['FOV Type'] = 'Circle',
+			['Circle Value'] = 75,
+			['Box'] = {
+				['X'] = 75,
+				['Y'] = 75,
+			},
+			['Visualize'] = false,
+		},
+	},
+	['Triggerbot'] = {
+		['Enabled'] = true,
+		['Shoot Mode'] = 'FOV',
+		['Target Mode'] = 'Target',
+		['Mode'] = 'Hold',
+		['Timing'] = {
+			['Cooldown'] = 0.0,
+		},
+		['Prediction'] = {
+			['X'] = 0,
+			['Y'] = 0,
+			['Z'] = 0,
+		},
+		['FOV'] = {
+			['FOV Type'] = 'Circle',
+			['Circle Value'] = 45,
+			['Box'] = {
+				['X'] = 75,
+				['Y'] = 75,
+			},
+			['Visualize'] = false,
+		},
+	},
+	['Raid Awareness'] = {
+		['Enabled'] = true,
+		['Max Render Distance'] = 250,
+		['Binds'] = {
+			['Add Target'] = 'J',
+			['Remove Target'] = 'P',
+		},
+		['Box'] = {
+			['Enabled'] = true,
+			['Box Color'] = Color3.fromRGB(255, 255, 255),
+		},
+		['Name'] = {
+			['Enabled'] = true,
+			['Type'] = 'Display',
+			['Color'] = Color3.fromRGB(255, 255, 255),
+		},
+		['Health'] = {
+			['Enabled'] = true,
+			['Type'] = 'Bar',
+			['Missing Health Color'] = Color3.fromRGB(255, 0, 0),
+			['High Health Color'] = Color3.fromRGB(0, 255, 0),
+		},
+		['Lines'] = {
+			['Enabled'] = false,
+			['Type'] = 'Top',
+			['Color'] = Color3.fromRGB(255, 255, 255),
+		},
+	},
+	['Player Modification'] = {
+		['Movement'] = {
+			['Enabled'] = true,
+			['Speed Modifications'] = {
+				['Enabled'] = true,
+				['Value'] = 5,
+			},
+			['Jump Modifications'] = {
+				['Enabled'] = true,
+				['Value'] = 2,
+			},
+		},
+		['Weapon Modifications'] = {
+			['Enabled'] = true,
+			['Double-Barrel SG'] = {
+				['Value'] = 0.4
+			},
+			['TacticalShotgun'] = {
+				['Value'] = 0.4,
+			},
+			['Other Shotguns'] = {
+				['Value'] = 0.4,
+			},
+		},
+		['Inventory Sorter'] = {
+			['Enabled'] = true,
+			['Sort Food'] = true,
+			['Order'] = {
+				"[Double-Barrel SG]",
+				"[Revolver]",
+				"[TacticalShotgun]",
+				"[Knife]",
+			},
+		},
+	},
+}
+
 if type(shared.CiderCleanup) == 'function' then
 	pcall(shared.CiderCleanup)
 	shared.CiderCleanup = nil
