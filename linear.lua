@@ -167,22 +167,40 @@ end)
 -- SILENT AIM METAMETHOD
 --==================================================
 local mt = getrawmetatable(game)
-local old = mt.__index
-setreadonly(mt,false)
+local oldNamecall = mt.__namecall
+setreadonly(mt, false)
 
-mt.__index = newcclosure(function(self,key)
-    if self == Mouse and CFG['Silent Aim'].Enabled then
-        local _, point = GetSilentTarget()
-        if point then
-            if key == "Hit" then
-                return CFrame.new(point)
-            elseif key == "UnitRay" then
-                local o = Camera.CFrame.Position
-                return Ray.new(o, (point - o).Unit * 1000)
+mt.__namecall = newcclosure(function(self, ...)
+    local method = getnamecallmethod()
+    local args = {...}
+
+    if not checkcaller() and CFG['Silent Aim'].Enabled then
+        -- This checks if the game is asking for the Mouse location or Raycasting
+        if method == "FindPartOnRayWithIgnoreList" or method == "FindPartOnRay" then
+            local _, point = GetSilentTarget()
+            if point then
+                -- Redirect the ray to our target point
+                local origin = args[1].Origin
+                args[1] = Ray.new(origin, (point - origin).Unit * 1000)
+                return oldNamecall(self, unpack(args))
             end
         end
     end
-    return old(self,key)
+
+    return oldNamecall(self, ...)
 end)
 
-setreadonly(mt,true)
+-- Also keep a simpler __index hook for 'Mouse.Hit' specifically
+local oldIndex = mt.__index
+mt.__index = newcclosure(function(self, key)
+    if self == Mouse and (key == "Hit" or key == "Target") and CFG['Silent Aim'].Enabled then
+        local _, point = GetSilentTarget()
+        if point then
+            if key == "Hit" then return CFrame.new(point) end
+            if key == "Target" then return workspace:FindPartOnRay(Ray.new(Camera.CFrame.Position, (point - Camera.CFrame.Position).Unit * 1000)) end
+        end
+    end
+    return oldIndex(self, key)
+end)
+
+setreadonly(mt, true)
