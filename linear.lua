@@ -1,30 +1,4 @@
 
-shared.linear = {
-    ['Silent Aim'] = {
-        ['Enabled'] = true,
-        ['Aim Part'] = 'Closest Part', -- Closest Part, Closest Point, Head, UpperTorso, or table
-        ['Team Check'] = false,
-        ['FOV'] = {
-            ['Radius'] = 150,
-            ['Visible'] = false,
-        },
-    },
-    ['Trigger Bot'] = {
-        ['Enabled'] = false,
-        ['Activation'] = {
-            ['Mode'] = 'Hold', -- Hold / Toggle
-            ['Key'] = Enum.KeyCode.Z,
-        },
-        ['Shoot Delay'] = 0.01,
-        ['Team Check'] = false,
-        ['FOV'] = {
-            ['Radius'] = 130,
-            ['Visible'] = false,
-        },
-    }
-}
-
-
 repeat task.wait() until game:IsLoaded()
 
 --==================================================
